@@ -12,13 +12,14 @@ function PlaybackButton(){
 
 	this.draw = function(){
 		if(this.playing){
-			rect(this.x, this.y, this.width/2 - 2, this.height);
-			rect(this.x + (this.width/2 + 2), this.y, this.width/2 - 2, this.height);
+			canvas2D.rect(this.x, this.y, this.width/2 - 2, this.height);
+			canvas2D.rect(this.x + (this.width/2 + 2), this.y, this.width/2 - 2, this.height);
 		}
 		else{	
-			triangle(this.x, this.y, this.x + this.width, this.y + this.height/2, this.x, this.y+this.height);
+			canvas2D.triangle(this.x, this.y, this.x + this.width, this.y + this.height/2, this.x, this.y+this.height);
 
 		}
+		texture(canvas2D, windowWidth, windowHeight);
 	};
 
 	//checks for clicks on the button, starts or pauses playabck.

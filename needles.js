@@ -29,8 +29,7 @@ function Needles() {
 		var spectrum = fourier.analyze();
 		//iterator for selecting frequency bin.
 		var currentBin = 0;
-		push();
-		fill('#f0f2d2');
+		canvas2D.fill('#f0f2d2');
 		//nested for loop to place plots in 2*2 grid.
 		for (var i = 0; i < this.plotsDown; i++) {
 			for (var j = 0; j < this.plotsAcross; j++) {
@@ -42,7 +41,7 @@ function Needles() {
 				var h = this.plotHeight - this.pad;
 
 				//draw a rectangle at that location and size
-				rect(x, y, w, h);
+				canvas2D.rect(x, y, w, h);
 				//add on the ticks
 				this.ticks(x + w / 2, y + h, this.frequencyBins[currentBin]);
 
@@ -53,8 +52,7 @@ function Needles() {
 				currentBin++;
 			}
 		}
-
-		pop();
+		image(canvas2D, -windowWidth/2, -windowHeight/2)
 	};
 
 	/*
@@ -64,18 +62,18 @@ function Needles() {
 	 *@param bottomY: The bottom y coordinate of the plot rectangle
 	 */
 	this.needle = function(energy, centreX, bottomY) {
-		push();
-		stroke('#333333');
+		canvas2D.push();
+		canvas2D.stroke('#333333');
 		//translate so 0 is at the bottom of the needle
-		translate(centreX, bottomY);
+		canvas2D.translate(centreX, bottomY);
 		//map the energy to the angle for the plot
 		theta = map(energy, 0, 255, minAngle, maxAngle);
 		//calculate x and y coorindates from angle for the length of needle
 		var x = this.dialRadius * cos(theta);
 		var y = this.dialRadius * sin(theta);
 		//draw the needle
-		line(0, 0, x, y);
-		pop();
+		canvas2D.line(0, 0, x, y);
+		canvas2D.pop();
 	};
 
 	/*
@@ -87,15 +85,15 @@ function Needles() {
 	this.ticks = function(centreX, bottomY, freqLabel) {
 		// 8 ticks from pi to 2pi
 		var nextTickAngle = minAngle;
-		push();
-		stroke('#333333');
-		fill('#333333');
-		translate(centreX, bottomY);
+		canvas2D.push();
+		canvas2D.stroke('#333333');
+		canvas2D.fill('#333333');
+		canvas2D.translate(centreX, bottomY);
 		//draw the semi circle for the botttom of the needle
-		arc(0, 0, 20, 20, PI, 2 * PI);
-		textAlign(CENTER);
-		textSize(12);
-		text(freqLabel, 0, -(this.plotHeight / 2));
+		canvas2D.arc(0, 0, 20, 20, PI, 2 * PI);
+		canvas2D.textAlign(CENTER);
+		canvas2D.textSize(12);
+		canvas2D.text(freqLabel, 0, -(this.plotHeight / 2));
 
 		for (var i = 0; i < 9; i++) {
 			//for each tick work out the start and end coordinates of
@@ -106,10 +104,10 @@ function Needles() {
 			var y = (this.dialRadius) * sin(nextTickAngle);
 			var y1 = (this.dialRadius - 5) * sin(nextTickAngle);
 
-			line(x, y, x1, y1);
+			canvas2D.line(x, y, x1, y1);
 			nextTickAngle += PI / 10;
 		}
-		pop();
+		canvas2D.pop();
 	};
 
 }

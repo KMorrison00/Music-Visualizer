@@ -18,9 +18,9 @@ function Fractals() {
         this.frame += deltaTime / (1000 / 60);
         this.time = fract(this.frame / frames);
         
-        scale(width, height);
-        stroke(1);
-        strokeWeight(0.005);
+        canvas2D.scale(width, height);
+        canvas2D.stroke(1);
+        canvas2D.strokeWeight(0.005);
         // depth determines how many fractals will be currently drawn, subtracting the treble from the max 
         //  stylistically makes the clear notes like snares more obvious by clearing the small levels.
         let depth = this.maxDepth - this.maxDepth * invCosn(map(fourier.getEnergy('treble'), 0, 255, 0, 4));
@@ -54,9 +54,9 @@ function Fractals() {
                 let hue = map(fourier.getEnergy('treble'), 0, 255, 0, 1) + fract(this.time);
                 let sat = 1;
                 let light = map(fourier.getEnergy('mid'), 0, 255, 0.2, 1);
-                stroke(color(hue,sat,light))        
-                fill(color(hue,sat,light))
-                curve(x, y, x + p1.x, y + p1.y, x + p2.x, y + p2.y, x + p2.x, y + p2.y);
+                canvas2D.stroke(color(hue,sat,light))        
+                canvas2D.fill(color(hue,sat,light))
+                canvas2D.curve(x, y, x + p1.x, y + p1.y, x + p2.x, y + p2.y, x + p2.x, y + p2.y);
             }
         }
     }

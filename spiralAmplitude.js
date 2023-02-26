@@ -14,14 +14,14 @@ function SpiralAmplitude() {
         this.rotationAngle = map(fract(this.time/(2*PI)), 0, 1, 0, 2*PI);
         colorMode(HSL, 1);
         var spectrum =  fourier.analyze();
-        scale(width, height);
-        strokeWeight(0.005);
-        noFill();
+        canvas2D.scale(width, height);
+        canvas2D.strokeWeight(0.005);
+        canvas2D.noFill();
         const size = 0.5;
-        beginShape(this.modes[floor(this.time * timer)]);
+        canvas2D.beginShape(this.modes[floor(this.time * timer)]);
         if (this.modes[floor(this.time * timer)] === TRIANGLE_FAN) {
             // spans out from first point so we must set the center point
-            curveVertex(0.5, 0.5);
+            canvas2D.curveVertex(0.5, 0.5);
         }
         spectrum.forEach((frequency, index) => {
             // 
@@ -31,10 +31,10 @@ function SpiralAmplitude() {
             let hue = map(frequency, 0, 255, 0, 1);
             let sat = 1;
             let light = map(fourier.getEnergy('mid'), 0, 255, 0.2, 1);
-            stroke(color(hue,sat,light))        
-            curveVertex(0.5 + point.x, 0.5 + point.y);
+            canvas2D.stroke(color(hue,sat,light))        
+            canvas2D.curveVertex(0.5 + point.x, 0.5 + point.y);
         });
-        endShape();
+        canvas2D.endShape();
     }
 
 }

@@ -4,12 +4,11 @@ function WavePattern() {
 	this.name = "wavepattern";
 	//draw the wave form to the screen
 	this.draw = function() {
-		push();
-		noFill();
-		stroke(255, 0, 0);
-		strokeWeight(2);
+		canvas2D.noFill();
+		canvas2D.stroke(255, 0, 0);
+		canvas2D.strokeWeight(2);
 
-		beginShape();
+		canvas2D.beginShape();
 		//calculate the waveform from the fft.
 		var wave = fourier.waveform();
 		for (var i = 0; i < wave.length; i++) {
@@ -18,10 +17,9 @@ function WavePattern() {
 			var x = map(i, 0, wave.length, 0, width);
 			var y = map(wave[i], -1, 1, 0, height);
 
-			vertex(x, y);
+			canvas2D.vertex(x, y);
 		}
 
-		endShape();
-		pop();
+		canvas2D.endShape();
 	};
 }

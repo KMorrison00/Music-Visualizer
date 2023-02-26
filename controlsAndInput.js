@@ -32,19 +32,20 @@ function ControlsAndInput(){
 	//draws the playback button and potentially the menu
 	this.draw = function(){
 		push();
-		fill("white");
-		stroke("black");
-		strokeWeight(2);
-		textSize(34);
+		canvas2D.fill("white");
+		canvas2D.stroke("black");
+		canvas2D.strokeWeight(2);
+		canvas2D.textSize(34);
 
 		//playback button 
 		this.playbackButton.draw();
 		//only draw the menu if menu displayed is set to true.
 		if(this.menuDisplayed){
 
-			text("Select a visualisation:", 100, 30);
+			canvas2D.text("Select a visualisation:", 100, 30);
 			this.menu();
-		}	
+		}
+		image(canvas2D, -windowWidth/2, -windowHeight/2)
 		pop();
 
 	};
@@ -53,7 +54,7 @@ function ControlsAndInput(){
 		//draw out menu items for each visualisation
 		for(var i = 0; i < vis.visuals.length; i++){
 			var yLoc = 70 + i*40;
-			text((i+1) + ":  " +vis.visuals[i].name, 100, yLoc);
+			canvas2D.text((i+1) + ":  " +vis.visuals[i].name, 100, yLoc);
 		}
 	};
 }
