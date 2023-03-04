@@ -5,6 +5,7 @@ function Fractals() {
     this.name = 'fractals';
     this.frame = 0;
     this.time = 0;
+    this.twoD = true;
     const frames = 2000;
     const CPUlimiter = 7;
     this.numberOfSides = 3;

@@ -3,6 +3,7 @@
 
 function SpiralAmplitude() {
     this.name = 'spiral amplitude';
+    this.twoD = true;
     this.time = 0;
     this.frame = 0;
     const frames = 2000;

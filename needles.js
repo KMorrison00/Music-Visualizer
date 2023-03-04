@@ -2,6 +2,7 @@
 function Needles() {
 	//name of the visualisation
 	this.name = "needles";
+	this.twoD = true;
 	//how large is the arc of the needle plot.
 	var minAngle = PI + PI / 10;
 	var maxAngle = TWO_PI - PI / 10;

@@ -32,6 +32,7 @@ function ControlsAndInput(){
 	//draws the playback button and potentially the menu
 	this.draw = function(){
 		push();
+		canvas2D.push()
 		canvas2D.fill("white");
 		canvas2D.stroke("black");
 		canvas2D.strokeWeight(2);
@@ -46,6 +47,7 @@ function ControlsAndInput(){
 			this.menu();
 		}
 		image(canvas2D, -windowWidth/2, -windowHeight/2)
+		canvas2D.pop()
 		pop();
 
 	};

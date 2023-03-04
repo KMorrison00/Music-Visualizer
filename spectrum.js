@@ -1,5 +1,6 @@
 function Spectrum(){
 	this.name = "spectrum";
+	this.twoD = true;
 	this.draw = function(){
 		var spectrum = fourier.analyze();
 		canvas2D.noStroke();
