@@ -69,15 +69,18 @@ function setup(){
 }
 
 function draw(){
-	background(0);
-	canvas2D.background(0);
 	push();
+	background(0);
 	if (vis.selectedVisual.twoD === true) {
+		canvas2D.background(0);
 		//draw the selected visualisation, isolated, so they dont interfere
 		canvas2D.push();
 		vis.selectedVisual.draw();
 		canvas2D.pop();
 	} else {
+		// wipe the 2d images so they dont bleed into the 3d background
+		canvas2D.clear()
+		clear();
 		vis.selectedVisual.draw();
 	}
 	pop();

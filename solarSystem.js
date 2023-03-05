@@ -14,20 +14,21 @@ function SolarSystem() {
     //     Uranus  : new Planet(35, 'treble', uranus)
     // }
     this.bodies = [
-        new Planet(50, 'treble', sun),
-        // new Planet(25, 'treble', mercury),
-        // new Planet(30, 'treble', venus),
-        // new Planet(30, 'treble', earth),
-        // new Planet(30, 'treble', mars),
-        // new Planet(40, 'treble', jupiter),
-        // new Planet(40, 'treble', saturn),
-        // new Planet(35, 'treble', uranus)
+        new Planet(40, 'treble', sun, 1, 0, 1),
+        new Planet(3, 'treble', mercury, 50, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(9, 'treble', venus, 80, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(10, 'treble', earth, 110, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(6, 'treble', mars, 140, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(25, 'treble', jupiter, 200, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(25, 'treble', saturn, 300, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(22, 'treble', uranus, 330, 0.01, map(Math.random(), 0, 1, 0, TWO_PI)),
+        new Planet(20, 'treble', neptune, 360, 0.01, map(Math.random(), 0, 1, 0, TWO_PI))
     ]
     // plan now is to have the solar system orbitting through space 
     // where each planet pulses with rings based on frequency
     this.draw = function() {
         push();
-        ambientLight('white')
+        fourier.analyze()
         for (body of this.bodies) {
             body.draw()
         }
