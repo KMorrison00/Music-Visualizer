@@ -22,11 +22,13 @@ class Planet {
         noStroke()
 
         let vector2 = createVector(0, 0, 1);
+        // this is also the axial vector
         let p = this.vector.cross(vector2);
         // Rotation around a 0-length axis doesn't work in p5.js, so don't do that.
         if (p.x != 0 || p.y != 0 || p.z != 0) {
             rotate(this.orbitAngle, p);
         }
+        // make sure teh spheres location is up to date
         translate(this.vector.x, this.vector.y, this.vector.z);
         push()
         // apply some rotations because planets spin (usually)
